@@ -1,0 +1,120 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Login &amp; Detect - Real-time Emotion Detection
+  </title> 
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: "Inter", sans-serif;
+    }
+  </style>
+   
+ </head>
+ <body class="bg-gray-50 min-h-screen flex items-center justify-center px-4">
+  <div class="max-w-4xl w-full bg-white rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
+   <div class="md:w-1/2 p-8 flex flex-col justify-center bg-gradient-to-tr from-indigo-600 to-indigo-400 text-white">
+    <h1 class="text-3xl font-bold mb-4">
+     Real-time Emotion Detection
+    </h1>
+    <p class="text-indigo-100 leading-relaxed">
+     Real-time emotion detection is an advanced technology that identifies
+        human emotions such as happiness, sadness, anger, and surprise by
+        analyzing facial expressions. Using image-based techniques and computer
+        vision powered by machine learning, it enables systems to detect
+        emotions instantly and respond accordingly. This enhances
+        human-computer interaction and finds applications in fields like
+        education, mental health, and customer service by making systems more
+        intuitive and emotionally aware.
+    </p>
+    <img alt="Illustration showing a human face with emotion detection overlays and computer vision elements" class="mt-8 rounded-lg shadow-lg" height="300" src="https://media.istockphoto.com/id/1166057711/vector/biometric-person-identification-facial-recognition-concept-futuristic-low-polygonal-human.jpg?s=612x612&w=0&k=20&c=bEePF402x94i0sHzgQ9kc8TSGb3jSs4DbeqIusyiIPM=" width="400"/>
+   </div>
+   
+   <div class="md:w-1/2 p-8 flex flex-col justify-center">
+    <div class="w-full max-w-md mx-auto">
+     <div class="mb-6 flex justify-center space-x-4">
+      <button class="px-6 py-2 font-semibold rounded-md border-b-4 border-indigo-600 text-indigo-700 focus:outline-none" id="loginBtn">
+      login
+      </button>
+      <button class="px-6 py-2 font-semibold rounded-md border-b-4 border-transparent text-gray-500 hover:text-indigo-600 focus:outline-none" id="registerBtn">
+       Register
+      </button>
+     </div>
+     <form class="space-y-6" id="loginForm">
+      <div>
+       <label class="block text-sm font-medium text-gray-700" for="loginEmail">
+        Email address
+       </label>
+       <input class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none" id="loginEmail" name="loginEmail" placeholder="you@example.com" required="" type="email"/>
+      </div>
+      <div>
+       <label class="block text-sm font-medium text-gray-700" for="loginPassword">
+        Password
+       </label>
+       <input class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none" id="loginPassword" name="loginPassword" placeholder="Enter your password" required="" type="password"/>
+      </div>
+      <button class="w-full bg-indigo-600 text-white font-semibold py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" type="submit">
+        <dev>
+        <a class="text-indigo-600" href="main.html">login</a>
+      </dev>
+       Login
+      </button>
+     </form>
+     <form class="space-y-6 hidden" id="registerForm">
+       <label class="block text-sm font-medium text-gray-700" for="registerEmail">
+        Email address
+       </label>
+       <input class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none" id="registerEmail" name="registerEmail" placeholder="you@example.com" required="" type="email"/>
+      </div>
+      <div>
+       <!-- <label class="block text-sm font-medium text-gray-700" for="registerPassword">
+        Set Password
+       </label>
+       <input class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none" id="registerPassword" name="registerPassword" placeholder="Create a password" required="" type="password"/>
+      </div>
+      <button class="w-full bg-indigo-600 text-white font-semibold py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" type="submit">
+       Register
+      </button> -->
+     </form>
+     <button class="mt-8 w-full bg-green-600 text-white font-semibold py-2 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500" id="detectBtn" type="button">
+      Click to Detect Emotions
+     </button>
+    </div>
+   </div>
+  </div>
+  <script>
+   const loginBtn = document.getElementById("loginBtn");
+    const registerBtn = document.getElementById("registerBtn");
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+    const detectBtn = document.getElementById("detectBtn");
+
+    loginBtn.addEventListener("click", () => {
+      loginBtn.classList.add("border-indigo-600", "text-indigo-700");
+      loginBtn.classList.remove("border-transparent", "text-gray-500");
+      registerBtn.classList.remove("border-indigo-600", "text-indigo-700");
+      registerBtn.classList.add("border-transparent", "text-gray-500");
+      loginForm.classList.remove("hidden");
+      registerForm.classList.add("hidden");
+    });
+
+    registerBtn.addEventListener("click", () => {
+      registerBtn.classList.add("border-indigo-600", "text-indigo-700");
+      registerBtn.classList.remove("border-transparent", "text-gray-500");
+      loginBtn.classList.remove("border-indigo-600", "text-indigo-700");
+      loginBtn.classList.add("border-transparent", "text-gray-500");
+      registerForm.classList.remove("hidden");
+      loginForm.classList.add("hidden");
+    });
+
+    detectBtn.addEventListener("click", () => {
+      window.location.href = "detect.html";
+    });
+  </script>
+ </body>
+</html>
